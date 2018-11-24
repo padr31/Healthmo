@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Healthmo</string>
+    <string name="title_activity_ecg">ECGActivity</string>
+    <string name="instructions_text">This app demonstrates the use of ECG API on Movesense sensor. First scan for BLE devices and then connect to it by clicking it on the list. After connection in established, ECG view will open.</string>
+    <string name="title_activity_health">HealthActivity</string>
+    <string name="tab_text_1">Emergency</string>
+    <string name="tab_text_2">Sauna</string>
+    <string name="tab_text_3">ECG</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>
