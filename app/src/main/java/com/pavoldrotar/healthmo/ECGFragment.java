@@ -14,6 +14,7 @@ import android.widget.Switch;
 
 import com.google.gson.Gson;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.movesense.mds.Mds;
@@ -67,16 +68,23 @@ public class ECGFragment extends Fragment {
         // Set ECG graph
         GraphView graph = (GraphView) rootView.findViewById(R.id.graphECG);
         mSeriesECG = new LineGraphSeries<DataPoint>();
+        mSeriesECG.setColor(getResources().getColor(R.color.colorAccent));
         graph.addSeries(mSeriesECG);
+
+        graph.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+        GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
+        gridLabelRenderer.setGridColor(getResources().getColor(R.color.colorWhite));
+        gridLabelRenderer.setVerticalLabelsColor(getResources().getColor(R.color.colorWhite));
+        gridLabelRenderer.reloadStyles();
+
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setMinX(0);
-        graph.getViewport().setMaxX(500);
+        graph.getViewport().setMaxX(300);
 
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(-2000);
         graph.getViewport().setMaxY(2000);
-
-
 
 
         return rootView;

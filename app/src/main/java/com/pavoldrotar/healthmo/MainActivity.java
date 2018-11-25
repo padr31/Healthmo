@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // Init Scan UI
         mScanResultListView = (ListView)findViewById(R.id.listScanResult);
         mScanResArrayAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, mScanResArrayList);
+                R.layout.list_item, mScanResArrayList);
+        mScanResultListView.getDivider().setTint(getResources().getColor(R.color.colorWhite));
         mScanResultListView.setAdapter(mScanResArrayAdapter);
         mScanResultListView.setOnItemLongClickListener(this);
         mScanResultListView.setOnItemClickListener(this);
