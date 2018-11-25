@@ -32,9 +32,14 @@ public class EmergencyFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private Integer previousBpm;
+    private boolean isDialogDisplayed = false;
 
     public EmergencyFragment() {
 
+    }
+
+    private void setDialogDisplayedStatus(boolean isDisplayed) {
+        isDialogDisplayed = isDisplayed;
     }
 
     public void showAlertDialog(Integer bpm) {
@@ -53,6 +58,7 @@ public class EmergencyFragment extends Fragment {
             private static final int AUTO_DISMISS_MILLIS = 10000;
             @Override
             public void onShow(final DialogInterface dialog) {
+                setDialogDisplayedStatus(true);
                 final Button defaultButton = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
                 final CharSequence positiveButtonText = defaultButton.getText();
                 new CountDownTimer(AUTO_DISMISS_MILLIS, 100) {
@@ -68,6 +74,7 @@ public class EmergencyFragment extends Fragment {
                     public void onFinish() {
                         if (((AlertDialog) dialog).isShowing()) {
                             dialog.dismiss();
+                            setDialogDisplayedStatus(false);
                         }
                     }
                 }.start();
@@ -97,7 +104,7 @@ public class EmergencyFragment extends Fragment {
                 getContext().startService(i);
 
                 if (bpm > 150 || bpm < 40) {
-                    if (previousBpm != null && previousBpm != bpm) {
+                    if (previousBpm != null && previousBpm != bpm && !isDialogDisplayed) {
                         showAlertDialog(bpm);
                     }
                 }
