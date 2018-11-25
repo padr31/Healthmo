@@ -56,7 +56,7 @@ public class PostService extends IntentService {
             JSONObject params = new JSONObject();
             params.put("from_phone_number", intent.getStringExtra("from_phone_number"));
             params.put("to_phone_number", intent.getStringExtra("to_phone_number"));
-            params.put("message", "Test message");
+            params.put("message", "This is a request on behalf of John. He doesn't feel good and requested your help, likely related to heart issues. He's located at Dipoli, Espoo, at Junction Demo Area. Call back at 3599764.");
             params.put("send_sms", 1);
 
             StringEntity entity = new StringEntity(params.toString());

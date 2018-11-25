@@ -104,8 +104,8 @@ public class EmergencyFragment extends Fragment {
                 i.putExtra("event", "bpm");
                 getContext().startService(i);
 
-                if (bpm > 150 || bpm < 40) {
-                    if (previousBpm != null && previousBpm != bpm && !isDialogDisplayed) {
+                if (bpm > 120 || bpm < 40) {
+                    if (previousBpm != null && previousBpm != bpm) {
                         showAlertDialog(bpm);
                     }
                 }
