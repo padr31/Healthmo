@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        app:key="Emergency Person"
+        app:title="Emergency Person"
+        app:summary="The full name of your trusted contact"/>
+
+    <Preference
+        app:key="Emergency Contact"
+        app:title="Emergency Contact"
+        app:summary="The full phone number with the country code"/>
+
+
+</PreferenceScreen>

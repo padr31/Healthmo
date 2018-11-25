@@ -9,8 +9,10 @@
     >
 
     <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/topButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,23 +22,20 @@
             android:id="@+id/btn_enter_sauna"
             android:layout_width="154dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="148dp"
             android:background="@drawable/button_shape"
             android:text="@string/btn_enter_sauna"
             android:textColor="@color/colorWhite"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_exit_sauna"
             android:layout_width="154dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="164dp"
             android:background="@drawable/button_shape"
             android:text="@string/btn_exit_sauna"
             android:textColor="@color/colorWhite"
             app:layout_constraintStart_toEndOf="@+id/btn_enter_sauna"
+            android:layout_marginStart="64dp"
             app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.v7.widget.LinearLayoutCompat>
@@ -46,34 +45,28 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topButtons">
 
         <Button
             android:id="@+id/btn_feel_good"
             android:layout_width="154dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/button_shape"
             android:text="@string/btn_feel_good"
             android:textColor="@color/colorWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_feel_bad" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <Button
             android:id="@+id/btn_feel_bad"
             android:layout_width="154dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/button_shape"
             android:text="@string/btn_feel_bad"
             android:textColor="@color/colorWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.v7.widget.LinearLayoutCompat>
 

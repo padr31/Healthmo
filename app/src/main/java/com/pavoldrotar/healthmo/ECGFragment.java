@@ -76,6 +76,7 @@ public class ECGFragment extends Fragment {
         GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
         gridLabelRenderer.setGridColor(getResources().getColor(R.color.colorWhite));
         gridLabelRenderer.setVerticalLabelsColor(getResources().getColor(R.color.colorWhite));
+        gridLabelRenderer.setHorizontalLabelsColor(getResources().getColor(R.color.colorWhite));
         gridLabelRenderer.reloadStyles();
 
         graph.getViewport().setXAxisBoundsManual(true);

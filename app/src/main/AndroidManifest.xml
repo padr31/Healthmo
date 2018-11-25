@@ -24,6 +24,7 @@
             android:name="com.pavoldrotar.healthmo.HealthActivity"
             android:label="@string/title_activity_health"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <service
             android:name=".PostService"
             android:exported="false"/>
