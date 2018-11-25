@@ -8,4 +8,9 @@
     <string name="tab_text_3">ECG</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="btn_enter_sauna">Enter Sauna</string>
+    <string name="btn_exit_sauna">Exit Sauna</string>
+    <string name="btn_call_emergency">Call Emergency</string>
+    <string name="btn_feel_good">Feeling Good</string>
+    <string name="btn_feel_bad">Feeling Bad</string>
 </resources>

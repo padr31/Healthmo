@@ -176,7 +176,7 @@ public class HealthActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_health, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_emergency, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -200,9 +200,9 @@ public class HealthActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            if(position == 2) return new ECGFragment();
             if(position == 0) return new EmergencyFragment();
-            // Return a PlaceholderFragment (defined as a static inner class below).
+            if(position == 1) return new SaunaFragment();
+            if(position == 2) return new ECGFragment();
             else return PlaceholderFragment.newInstance(position+1);
         }
 

@@ -2,6 +2,7 @@ package com.pavoldrotar.healthmo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,7 +65,7 @@ public class ECGFragment extends Fragment {
         connectedSerial = intent.getStringExtra(SERIAL);
 
         // Set ECG graph
-        /*GraphView graph = (GraphView) rootView.findViewById(R.id.graphECG);
+        GraphView graph = (GraphView) rootView.findViewById(R.id.graphECG);
         mSeriesECG = new LineGraphSeries<DataPoint>();
         graph.addSeries(mSeriesECG);
         graph.getViewport().setXAxisBoundsManual(true);
@@ -73,12 +74,18 @@ public class ECGFragment extends Fragment {
 
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMinY(-2000);
-        graph.getViewport().setMaxY(2000);*/
+        graph.getViewport().setMaxY(2000);
 
 
-        enableECGSubscription();
+
 
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        enableECGSubscription();
     }
 
     private void enableECGSubscription() {
@@ -93,7 +100,7 @@ public class ECGFragment extends Fragment {
         Log.d(LOG_TAG, strContract);
         // Clear graph
         mSeriesECG.resetData(new DataPoint[0]);
-        final GraphView graph = (GraphView) getView().findViewById(R.id.graphECG);
+        final GraphView graph = (GraphView) getView().getRootView().findViewById(R.id.graphECG);
         graph.getViewport().setMaxX(GRAPH_WINDOW_WIDTH);
         mDataPointsAppended = 0;
 

@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.movesense.mds.Mds;
 import com.movesense.mds.MdsConnectionListener;
 import com.movesense.mds.MdsException;
@@ -50,6 +49,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*Intent intent = new Intent(this, HealthActivity.class);
+        intent.putExtra(HealthActivity.SERIAL, "5");
+        startActivity(intent);*/
 
         // Init Scan UI
         mScanResultListView = (ListView)findViewById(R.id.listScanResult);
