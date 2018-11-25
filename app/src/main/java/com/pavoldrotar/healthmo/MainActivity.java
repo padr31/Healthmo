@@ -44,15 +44,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static ArrayList<MyScanResult> mScanResArrayList = new ArrayList<>();
     ArrayAdapter<MyScanResult> mScanResArrayAdapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*Intent intent = new Intent(this, HealthActivity.class);
+        Intent intent = new Intent(this, HealthActivity.class);
         intent.putExtra(HealthActivity.SERIAL, "5");
-        startActivity(intent);*/
+        startActivity(intent);
 
         // Init Scan UI
         mScanResultListView = (ListView)findViewById(R.id.listScanResult);

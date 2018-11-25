@@ -9,6 +9,7 @@
     >
 
     <android.widget.LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -35,31 +36,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="52dp"
+            android:fontFamily="Roboto Bold"
             android:textColor="@color/colorGreen"
             android:textSize="64sp"
-            android:fontFamily="Roboto Bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toEndOf="@+id/vector"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="12dp"
             tools:layout_constraintLeft_creator="1"
             tools:layout_constraintTop_creator="1" />
 
     </android.widget.LinearLayout>
 
+    <EditText
+        android:id="@+id/txt_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginTop="64dp"
+        android:hint="Trusted emergency number"
+        android:textColor="@color/colorWhite"
+        android:textColorHint="@color/colorWhite"
+        android:textAlignment="center"
+        android:text="+447597240390"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <Button
         android:id="@+id/btn_call_emergency"
-        android:layout_width="145dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="72dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginBottom="154dp"
         android:layout_marginEnd="8dp"
         android:textColor="@color/colorWhite"
         android:background="@drawable/button_shape"
         android:text="@string/btn_call_emergency"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

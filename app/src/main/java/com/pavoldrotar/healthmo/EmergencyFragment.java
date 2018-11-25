@@ -3,16 +3,20 @@ package com.pavoldrotar.healthmo;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,11 +107,14 @@ public class EmergencyFragment extends Fragment {
         handler.postDelayed(r, 0);
 
         //handle buttons
+        EditText phone = (EditText) rootView.findViewById(R.id.txt_phone);
 
         Button btnCallEmergency = (Button) rootView.findViewById(R.id.btn_call_emergency);
         btnCallEmergency.setOnClickListener(e -> {
             Intent i = new Intent(getContext(), PostService.class);
             i.putExtra("event", "CALL_EMERGENCY");
+            i.putExtra("to_phone_number", phone.getText().toString());
+            i.putExtra("from_phone_number", "+37253918121");
             getContext().startService(i);
         });
 

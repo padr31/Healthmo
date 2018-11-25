@@ -39,9 +39,31 @@ public class PostService extends IntentService {
             case "bpm":
                 makeBpm(intent);
                 break;
+            case "CALL_EMERGENCY":
+                makeEmergency(intent);
+                break;
             default:
                 makeEvent(intent);
                 break;
+        }
+    }
+
+    private void makeEmergency(Intent intent) {
+        String urlString = "https://stately-turbine-223513.appspot.com/callEmergency";
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.addHeader("Content-Type", "application/json");
+        try {
+            JSONObject params = new JSONObject();
+            params.put("from_phone_number", intent.getStringExtra("from_phone_number"));
+            params.put("to_phone_number", intent.getStringExtra("to_phone_number"));
+            params.put("message", "Test message");
+            params.put("send_sms", 1);
+
+            StringEntity entity = new StringEntity(params.toString());
+            entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+            post(urlString, client, entity);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
