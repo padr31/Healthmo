@@ -3,16 +3,20 @@ package com.pavoldrotar.healthmo;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +32,14 @@ public class EmergencyFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private Integer previousBpm;
+    private boolean isDialogDisplayed = false;
 
     public EmergencyFragment() {
 
+    }
+
+    private void setDialogDisplayedStatus(boolean isDisplayed) {
+        isDialogDisplayed = isDisplayed;
     }
 
     public void showAlertDialog(Integer bpm) {
@@ -41,6 +50,7 @@ public class EmergencyFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Log.i("EmergencyFragment", "calling to trustee, bpm:" +  bpm);
+                        sendEmergencyAlert();
                     }
                 })
                 .setNegativeButton(android.R.string.no, null)
@@ -49,6 +59,7 @@ public class EmergencyFragment extends Fragment {
             private static final int AUTO_DISMISS_MILLIS = 10000;
             @Override
             public void onShow(final DialogInterface dialog) {
+                setDialogDisplayedStatus(true);
                 final Button defaultButton = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
                 final CharSequence positiveButtonText = defaultButton.getText();
                 new CountDownTimer(AUTO_DISMISS_MILLIS, 100) {
@@ -64,6 +75,7 @@ public class EmergencyFragment extends Fragment {
                     public void onFinish() {
                         if (((AlertDialog) dialog).isShowing()) {
                             dialog.dismiss();
+                            setDialogDisplayedStatus(false);
                         }
                     }
                 }.start();
@@ -93,7 +105,7 @@ public class EmergencyFragment extends Fragment {
                 getContext().startService(i);
 
                 if (bpm > 150 || bpm < 40) {
-                    if (previousBpm != null && previousBpm != bpm) {
+                    if (previousBpm != null && previousBpm != bpm && !isDialogDisplayed) {
                         showAlertDialog(bpm);
                     }
                 }
@@ -106,12 +118,20 @@ public class EmergencyFragment extends Fragment {
 
         Button btnCallEmergency = (Button) rootView.findViewById(R.id.btn_call_emergency);
         btnCallEmergency.setOnClickListener(e -> {
-            Intent i = new Intent(getContext(), PostService.class);
-            i.putExtra("event", "CALL_EMERGENCY");
-            getContext().startService(i);
+            sendEmergencyAlert();
         });
 
 
         return rootView;
+    }
+
+
+    private void sendEmergencyAlert() {
+        EditText phone = this.getView().getRootView().findViewById(R.id.txt_phone);
+        Intent i = new Intent(getContext(), PostService.class);
+        i.putExtra("event", "CALL_EMERGENCY");
+        i.putExtra("to_phone_number", phone.getText().toString());
+        i.putExtra("from_phone_number", "+37253918121");
+        getContext().startService(i);
     }
 }
