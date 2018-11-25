@@ -27,6 +27,7 @@ public class EmergencyFragment extends Fragment {
      */
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+    private Integer previousBpm;
 
     public EmergencyFragment() {
 
@@ -39,7 +40,6 @@ public class EmergencyFragment extends Fragment {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO: Add positive button action code here
                         Log.i("EmergencyFragment", "calling to trustee, bpm:" +  bpm);
                     }
                 })
@@ -93,8 +93,11 @@ public class EmergencyFragment extends Fragment {
                 getContext().startService(i);
 
                 if (bpm > 150 || bpm < 40) {
-                    showAlertDialog(bpm);
+                    if (previousBpm != null && previousBpm != bpm) {
+                        showAlertDialog(bpm);
+                    }
                 }
+                previousBpm = bpm;
             }
         };
         handler.postDelayed(r, 0);
